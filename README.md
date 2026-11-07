@@ -1,8 +1,18 @@
-# LynString
+<p align="center">
+  <img src="docs/logo.png" alt="LynString logo" width="256" />
+</p>
 
-A desktop app for translating Android apps. Point it at your Android project and it finds every
-`values-xx/strings.xml`, shows what's missing or out of date, and translates it with Claude using
-your own Anthropic API key.
+<h3 align="center">Stupid Simple App Localization</h3>
+
+<p align="center">
+  <a href="#run-it">Run it</a> · <a href="https://github.com/harteg/lynstring/issues">Issues</a> · <a href="LICENSE">GPL-3.0</a>
+</p>
+
+---
+
+LynString is a desktop app (macOS, Windows, Linux) that scans your Android project, finds missing or
+outdated translations, and writes them straight back into your `res/values-*/strings.xml` files.
+No copy-paste. No external tools.
 
 <p align="center">
   <img src="docs/screenshots/project.png" alt="LynString showing 40 missing translations and 1 modified string" width="380">
@@ -10,22 +20,24 @@ your own Anthropic API key.
   <img src="docs/screenshots/up-to-date.png" alt="LynString after translating: everything up to date" width="380">
 </p>
 
-LynString started as a paid app. It's now free and open source: no account, no subscription, just
-your own Anthropic API key.
+> Free and open source · Bring your own [Anthropic API key](https://console.anthropic.com/settings/keys) · No account, no telemetry
+
+LynString started as a paid app. It's now free and open source and runs entirely on your machine,
+translating with Claude through your own API key.
 
 ## Features
 
-- **Project overview** – reads `res/values/strings.xml` and every translation, and shows per language
-  how many strings are missing.
-- **Translate missing strings** into any number of languages at once, or add new languages.
-- **Watches your project** – when you add or edit English strings, LynString notices and offers to
-  translate or update them.
-- **Android-safe output** – placeholders (`%1$s`, `%d`), `<xliff:g>`, HTML tags and CDATA are kept intact,
-  and apostrophes, quotes, `@`, `?` and invalid `\u` escapes are escaped so the resources compile.
-- **Wrong-language guard** – for languages with their own script (Hindi, Kannada, Arabic, Japanese, …)
-  every batch is checked and retried if the model drifted into another language.
-- **Clean-up tools** – find unused strings and strings that only exist in translations.
-- **Your key, your model** – choose Claude Sonnet 5.5 (default), Haiku 5.5 (cheapest) or Opus 5.5.
+- Detects missing translations across all locales and fills them with one click, or adds new languages
+- Watches your project and detects modified strings, then offers to re-translate just those
+- Preserves placeholders (`%1$s`, `%2$d`, etc.), `<xliff:g>` tags, HTML formatting and CDATA
+- Escapes special characters correctly for Android (apostrophes, quotes, `@`, `?`, invalid `\u` escapes)
+- Checks that languages with their own script (Hindi, Kannada, Arabic, Japanese, …) really come back
+  in that script, and retries a batch if the model drifted into another language
+- Supports protected terms (brand names that must stay untranslated) and project-specific context
+- Finds unused strings and strings that only exist in translations
+- Writes directly to your project files
+- Powered by Claude: pick Sonnet 5.5 (default), Haiku 5.5 (cheapest) or Opus 5.5; 100+ languages
+- Dark / light mode 🌙☀️
 
 ## Requirements
 
@@ -117,9 +129,16 @@ src-tauri/bindings/      TypeScript types generated from Rust (ts-rs)
 After changing a Rust type that's exported to TypeScript, regenerate the bindings with
 `cd src-tauri && cargo test export_bindings`.
 
-## Contributing
+## Privacy
 
-Issues and pull requests are welcome. Please run `pnpm check` and `cargo test` before opening a PR.
+No personal information, source code, crash logs or usage statistics are collected. Your string
+content is sent to Anthropic for translation with your own API key, and nothing else leaves your
+machine (apart from loading the UI fonts from Google Fonts).
+
+## Feedback, issues and contributing
+
+If you run into a bug or have a feature request, [open an issue](https://github.com/harteg/lynstring/issues).
+Pull requests are welcome; please run `pnpm check` and `cargo test` before opening one.
 
 ## License
 
