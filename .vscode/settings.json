@@ -1,0 +1,8 @@
+{
+  "rust-analyzer.cargo.targetDir": "target/analyzer",
+  "rust-analyzer.check.command": "cargo",
+  "rust-analyzer.inlayHints.enable": true,
+  "rust-analyzer.inlayHints.typeHints.enable": true,
+  "rust-analyzer.inlayHints.parameterHints.enable": true,
+  "rust-analyzer.inlayHints.chainingHints.enable": true
+}

@@ -1,0 +1,68 @@
+[package]
+name = "lynstring-tauri"
+version = "1.0.2"
+description = "LynString – AI-powered localization for Android apps"
+authors = ["Jakob Harteg <contact@jakobharteg.com>"]
+edition = "2021"
+default-run = "lynstring-tauri"
+
+[features]
+default = []
+ts-rs = []
+
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+# The `_lib` suffix may seem redundant but it is necessary
+# to make the lib name unique and wouldn't conflict with the bin name.
+# This seems to be only an issue on Windows, see https://github.com/rust-lang/cargo/issues/8519
+name = "lynstring_tauri_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2.0", features = [] }
+ts-rs = "11.0.1"
+
+[dependencies]
+tauri = { version = "2.0", features = [] }
+tauri-plugin-opener = "2.0"
+tauri-plugin-fs = "2.0"
+tauri-plugin-dialog = "2.0"
+tauri-plugin-store = "2.0"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+ts-rs = "11.0.1"
+quick-xml = "0.38.3"
+reqwest = { version = "0.11", features = ["json", "stream"] }
+tokio = { version = "1.0", features = ["time", "io-util"] }
+futures-util = "0.3"
+dotenv = "0.15"
+uuid = { version = "1.0", features = ["v4"] }
+regex = "1.10"
+lazy_static = "1.4"
+walkdir = "2.4"
+anyhow = "1.0"
+chrono = { version = "0.4", features = ["serde"] }
+tauri-plugin-process = "2.0"
+toml = "0.8"
+tempfile = "3.10"
+notify = "6.1"
+sha2 = "0.10" # For hashing project paths for snapshot filenames
+
+# Optimize build speed for development
+[profile.dev]
+incremental = true
+opt-level = 0
+debug = true
+debug-assertions = true
+overflow-checks = true
+# Use more codegen units for faster compilation (trade-off: slightly larger binaries)
+codegen-units = 256
+
+# Optimize dependencies (slightly faster builds)
+[profile.dev.package."*"]
+opt-level = 1
+debug = false
+# Disable debug info for dependencies to speed up compilation
+split-debuginfo = "unpacked"

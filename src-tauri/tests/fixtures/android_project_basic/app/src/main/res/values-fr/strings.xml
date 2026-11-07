@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <!-- Partial French translations -->
+    <string name="simple_quote">C'est une belle journée.</string>
+    <string name="file_path">Fichier enregistré dans /storage/emulated/0/Download/CrookCatcher/</string>
+
+</resources>
+

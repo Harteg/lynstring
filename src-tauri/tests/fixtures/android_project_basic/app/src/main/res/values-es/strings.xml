@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <!-- Partial Spanish translations -->
+    <string name="simple_quote">Es un buen día.</string>
+    <string name="bold_text">Esto es <b>negrita</b> y esto es <i>cursiva</i>.</string>
+    <string name="file_path">Archivo guardado en /storage/emulated/0/Download/CrookCatcher/</string>
+
+</resources>
+

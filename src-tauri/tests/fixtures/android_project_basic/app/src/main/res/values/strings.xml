@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <!-- ========================================================= -->
+    <!-- BASIC PUNCTUATION & ESCAPING -->
+    <!-- ========================================================= -->
+    <string name="simple_quote">It\'s a nice day.</string>
+    <string name="double_quote">She said, \"Hello!\"</string>
+    <string name="question_mark">What\? Really\?</string>
+    <string name="tom_and_jerry">Tom &amp; Jerry</string>
+    <string name="quoted_block">"This\'ll also work fine"</string>
+
+    <!-- ========================================================= -->
+    <!-- SPECIAL CHARACTERS & SYMBOLS -->
+    <!-- ========================================================= -->
+    <string name="at_symbol">Contact us at support\@example.com</string>
+
+    <!-- Literal percent signs must be written as %% -->
+    <string name="percent_literal">Battery at 45%% remaining.</string>
+
+    <!-- Placeholders -->
+    <string name="percent_placeholders">Hello %1$s, you have %2$d new messages.</string>
+    <string name="placeholder_parentheses">Estimated time (%1$d minutes)</string>
+    <string name="braces_placeholders">Your code: {1234}</string>
+
+    <!-- Unicode punctuation -->
+    <string name="unicode_em_dash">Use the em dash like this — properly spaced.</string>
+
+    <!-- Dollar signs -->
+    <string name="price_label">Price: $12.99</string>
+
+    <!-- ========================================================= -->
+    <!-- HTML-LIKE FORMATTING -->
+    <!-- ========================================================= -->
+    <string name="bold_text">This is <b>bold</b> and this is <i>italic</i>.</string>
+    <string name="link_text">Visit <a href=\"https://example.com\">our site</a> for more info.</string>
+
+    <!-- HTML escaped INSIDE placeholders (from Android docs) -->
+    <string name="html_inside_placeholder">
+        Hello %1$s! You have &lt;b&gt;%2$d new messages&lt;/b&gt;.
+    </string>
+
+    <!-- ========================================================= -->
+    <!-- CDATA -->
+    <!-- ========================================================= -->
+    <string name="email_footer_text"><![CDATA[
+        Sent by <a href="https://example.com" style="color:#64DD91;">
+        <strong>Dummy App</strong></a>. Unsubscribe in app settings.
+    ]]></string>
+
+    <!-- ========================================================= -->
+    <!-- ESCAPES, NEWLINES, WHITESPACE -->
+    <!-- ========================================================= -->
+    <string name="newline_example">Line one.\nLine two.</string>
+    <string name="tab_example">Column A\tColumn B</string>
+
+    <!-- Whitespace preservation -->
+    <string name="leading_space"> Leading space</string>
+    <string name="trailing_space">Trailing space </string>
+    <string name="double_space">Multiple   spaces inside</string>
+
+    <!-- Collapsing-avoidance using quoting -->
+    <string name="preserve_whitespace_with_quote">"A    B"</string>
+
+    <!-- ========================================================= -->
+    <!-- NON-LATIN / MULTILINGUAL / EMOJI -->
+    <!-- ========================================================= -->
+    <string name="emoji_mixed">Good job 👍! Merci &amp; شكراً</string>
+    <string name="cjk_mixed">中文文本 with English words.</string>
+
+    <!-- ========================================================= -->
+    <!-- XLIFF & NESTED STRUCTURES -->
+    <!-- ========================================================= -->
+    <string name="xliff_example">
+        Click <xliff:g id="button">%1$s</xliff:g> to continue.
+    </string>
+
+    <string name="file_path">File saved to /storage/emulated/0/Download/CrookCatcher/</string>
+
+    <string name="email_template">
+        Dear %1$s,\nWe found your phone. Please reply to this email.
+    </string>
+
+    <!-- ========================================================= -->
+    <!-- ESCAPED XML THAT MUST NOT BE INTERPRETED -->
+    <!-- ========================================================= -->
+    <string name="escaped_xml">&lt;div class='warning'&gt;Alert!&lt;/div&gt;</string>
+
+    <!-- ========================================================= -->
+    <!-- ANNOTATION SPAN (Android suggests this for custom spans) -->
+    <!-- ========================================================= -->
+    <string name="annotation_example">
+        This is <annotation font="serif">annotated text</annotation> with special styling.
+    </string>
+
+    <!-- ========================================================= -->
+    <!-- COMMENT PRESERVATION -->
+    <!-- ========================================================= -->
+    <!-- This comment must remain attached to the string below -->
+    <string name="with_comment">Do not lose my comment.</string>
+
+    <!-- ========================================================= -->
+    <!-- EMPTY STRING -->
+    <!-- ========================================================= -->
+    <string name="empty_string"></string>
+
+    <!-- ========================================================= -->
+    <!-- PLURALS (expanded: zero, one, two, few, many, other) -->
+    <!-- ========================================================= -->
+    <plurals name="apples">
+        <item quantity="zero">No apples</item>
+        <item quantity="one">%1$d apple</item>
+        <item quantity="two">%1$d apples</item>
+        <item quantity="few">%1$d apples</item>
+        <item quantity="many">%1$d apples</item>
+        <item quantity="other">%1$d apples</item>
+    </plurals>
+
+    <!-- Plural with CDATA and mixed placeholders -->
+    <plurals name="messages_count" translatable="true">
+        <item quantity="zero"><![CDATA[No <b>messages</b>]]></item>
+        <item quantity="one">%1$s has %2$d message</item>
+        <item quantity="other">%1$s has %2$d messages</item>
+    </plurals>
+
+    <!-- Plural with %1$s, %2$d, %3$f, %% literal - for placeholder preservation tests -->
+    <plurals name="plural_placeholders">
+        <item quantity="one">%1$s name, %2$d count, %3$f score, 50%% done</item>
+        <item quantity="other">%1$s names, %2$d counts, %3$f scores, 100%% done</item>
+    </plurals>
+
+    <!-- Plural with translatable="false" -->
+    <plurals name="plural_not_translatable" translatable="false">
+        <item quantity="one">Internal string</item>
+        <item quantity="other">Internal strings</item>
+    </plurals>
+
+    <!-- Plural with empty item -->
+    <plurals name="plural_empty_item">
+        <item quantity="one">One item</item>
+        <item quantity="other"></item>
+    </plurals>
+
+    <!-- Complex plural: placeholders (%1$s, %2$d), HTML in CDATA, mixed quantities -->
+    <plurals name="complex_plural">
+        <item quantity="zero"><![CDATA[<b>Zero</b> items for %1$s]]></item>
+        <item quantity="one">%1$s has %2$d item</item>
+        <item quantity="few">%1$s has %2$d items</item>
+        <item quantity="many">%1$s has %2$d items</item>
+        <item quantity="other">%1$s has %2$d items</item>
+    </plurals>
+
+
+</resources>

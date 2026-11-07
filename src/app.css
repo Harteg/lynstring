@@ -1,0 +1,221 @@
+@import "tailwindcss";
+
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* LynString brand colors */
+:root {
+  --radius: 0.65rem;
+  --app-header-height: 64px;
+  --app-top-offset: 64px;
+  --titlebar-height: 0px;
+  /* Light theme (from brand light variant) */
+  --background: #f5f5f5;
+  --foreground: #0a0a0a;
+  --card: #ffffff;
+  --card-foreground: #0a0a0a;
+  --popover: #ffffff;
+  --popover-foreground: #0a0a0a;
+  --primary: #00a85a;
+  --primary-hover: #008f4a;
+  --primary-foreground: #ffffff;
+  --secondary: #e5e5e5;
+  --secondary-foreground: #0a0a0a;
+  --muted: #e5e5e5;
+  --muted-foreground: #666666;
+  --accent: #e8faf0;
+  --accent-foreground: #00a85a;
+  --destructive: #dc2626;
+  --warning: #f59e0b;
+  --warning-foreground: #0a0a0a;
+  --border: #d4d4d4;
+  --input: #d4d4d4;
+  --ring: #00a85a;
+  --chart-1: #00a85a;
+  --chart-2: #4af0a0;
+  --chart-3: #1a1a1a;
+  --chart-4: #666666;
+  --chart-5: #111111;
+  --sidebar: #ffffff;
+  --sidebar-foreground: #0a0a0a;
+  --sidebar-primary: #00a85a;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #e8faf0;
+  --sidebar-accent-foreground: #00a85a;
+  --sidebar-border: #d4d4d4;
+  --sidebar-ring: #00a85a;
+  --footer-background: #eee;
+  --footer-height: 24px;
+  /* Title bar follows system appearance so macOS native controls stay visible */
+  --titlebar-background: #eee;
+  --appheader-background: #eee;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --titlebar-background: #111111;
+  }
+}
+
+/* macOS Overlay title bar: push content below native title bar */
+[data-platform="macos"] {
+  --titlebar-height: 28px;
+  --app-top-offset: calc(var(--titlebar-height) + var(--app-header-height));
+}
+
+[data-theme="dark"] {
+  /* LynString dark theme — electric mint on black */
+  --background: #0a0a0a;
+  --foreground: #f0f0f0;
+  --card: #111111;
+  --card-foreground: #f0f0f0;
+  --popover: #111111;
+  --popover-foreground: #f0f0f0;
+  --primary: #4af0a0;
+  --primary-hover: #1aff7a;
+  --primary-foreground: #0a0a0a;
+  --secondary: #1a1a1a;
+  --secondary-foreground: #f0f0f0;
+  --muted: #1a1a1a;
+  --muted-foreground: #666666;
+  --accent: #1a1a1a;
+  --accent-foreground: #4af0a0;
+  --destructive: #ef4444;
+  --warning: #f59e0b;
+  --warning-foreground: #0a0a0a;
+  --border: #222222;
+  --input: #222222;
+  --ring: #4af0a0;
+  --chart-1: #4af0a0;
+  --chart-2: #1aff7a;
+  --chart-3: #111111;
+  --chart-4: #666666;
+  --chart-5: #1a1a1a;
+  --sidebar: #111111;
+  --sidebar-foreground: #f0f0f0;
+  --sidebar-primary: #4af0a0;
+  --sidebar-primary-foreground: #0a0a0a;
+  --sidebar-accent: #1a1a1a;
+  --sidebar-accent-foreground: #4af0a0;
+  --sidebar-border: #222222;
+  --sidebar-ring: #4af0a0;
+  --footer-background: #111111;
+  --appheader-background: #111111;
+  /* Title bar always follows system (prefers-color-scheme) so native controls stay visible */
+}
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+/* LynString typography — Space Grotesk for headings/numbers, DM Sans for body */
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'DM Sans', system-ui, sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+}
+
+
+/* Cursor pointer for buttons, dropdown menu items, etc. */
+button, 
+[role="button"],
+[data-slot="button"],
+[data-slot="dropdown-menu-item"] {
+  cursor: pointer !important;
+}
+
+/* Emoji font utility - ensures proper emoji rendering on Windows */
+/* Keep sonner close button inside the toast card */
+[data-sonner-toast] {
+  --toast-close-button-transform: translate(0, 0);
+}
+
+.emoji-font {
+  font-family: "Segoe UI Emoji", "Segoe UI Symbol", "Apple Color Emoji", "Noto Color Emoji", sans-serif;
+  font-style: normal;
+  font-variant-emoji: emoji;
+  text-rendering: optimizeLegibility;
+}
+
+/* Token usage progress bar: grayscale (red when over 99%) — in app.css so it applies to portaled dropdown */
+.progress-token-usage {
+  background: #e5e5e5 !important;
+}
+.dark .progress-token-usage {
+  background: #404040 !important;
+}
+.progress-token-usage > div {
+  background: #737373 !important;
+}
+.dark .progress-token-usage > div {
+  background: #a3a3a3 !important;
+}
+.progress-token-usage.progress-over-limit > div,
+.dark .progress-token-usage.progress-over-limit > div {
+  background: var(--destructive) !important;
+}
+
+/* Standardized dialog content - use with sm:max-w-[…] for width variant */
+.dialog-standard {
+  @apply bg-secondary border-2 border-border shadow-2xl max-h-[90vh] overflow-y-auto rounded-lg;
+}
+
+.dialog-standard-header {
+  @apply pb-6 text-left;
+}
+
+.dialog-standard-title {
+  @apply text-xl font-semibold text-foreground text-left;
+}
+
+.dialog-standard-description {
+  @apply text-sm text-muted-foreground text-left;
+}
+
+.dialog-standard-footer {
+  @apply pt-6 border-t border-border;
+}

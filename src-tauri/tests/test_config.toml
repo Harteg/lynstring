@@ -1,0 +1,36 @@
+[parsing]
+basic = true
+complex = true
+plurals = true      # Tests will fail until feature is implemented
+cdata = true         # CDATA support is implemented
+annotation = false   # Tests will fail until feature is implemented
+commented = true     # Test that commented strings are ignored
+
+[translation]
+roundtrip = true
+placeholder_preservation = true
+special_chars = true
+real_ai = true       # Uses ANTHROPIC_API_KEY from .env file (via dotenv crate)
+comprehensive_edge_cases = true  # Comprehensive edge case validation for translation
+escaping = true      # Apostrophe/quote escaping logic
+plurals = true      # Translation + write of plural items (no API key needed)
+
+[writing]
+golden_comparison = true
+idempotence = true
+plurals = true      # Tests will fail until feature is implemented
+merge_mode = true
+whitespace_preservation = true
+empty_files = true
+error_handling = true
+
+[unused_strings]
+detection = true
+deletion = true
+
+[integration]
+missing_translations = true
+translate_write = true
+batch_translation = true
+change_detection = true
+

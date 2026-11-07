@@ -1,0 +1,7 @@
+[build]
+# Cargo automatically uses all available CPU cores by default
+# No need to set jobs explicitly - it will auto-detect
+
+[profile.dev]
+# Enable incremental compilation for faster rebuilds
+incremental = true
